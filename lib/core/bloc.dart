@@ -1,13 +1,11 @@
-import 'package:arch_sample/data/network/network_errors.dart';
+import 'package:arch_sample/core/failures.dart';
+import 'package:arch_sample/features/data/datasources/network/network_errors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BaseBloc extends Bloc with _CommonErrorsHandler {
-  BaseBloc(super.initialState);
-}
 
 /// Override [handleError], [onConnectionError], [onAuthorizationError], [onUnexpectedError] for your Bloc to change error handling
-mixin _CommonErrorsHandler on Bloc {
-  void handleError(dynamic error) {
+mixin CommonErrorsHandler<T,S> on Bloc<T,S> {
+  void handleError(Failure error) {
     if (error is ConnectionError) {
       onConnectionError();
     } else if (error is UnauthorizedError) {

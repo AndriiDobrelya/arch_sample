@@ -1,8 +1,8 @@
-import 'package:arch_sample/data/model/breed_model.dart';
+import 'package:arch_sample/features/domain/entities/breed_info.dart';
 import 'package:flutter/material.dart';
 
 class BreedListViewCellWidget extends StatelessWidget {
-  final BreedModel breed;
+  final BreedInfo breed;
 
   const BreedListViewCellWidget({super.key, required this.breed});
 

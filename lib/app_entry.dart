@@ -1,4 +1,4 @@
-import 'package:arch_sample/screens/breeds/breeds_screen.dart';
+import 'package:arch_sample/features/presentation/breeds/breeds_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppEntry extends StatefulWidget {

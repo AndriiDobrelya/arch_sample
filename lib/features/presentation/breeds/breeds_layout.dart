@@ -1,8 +1,7 @@
-import 'package:arch_sample/screens/breeds/bloc/breeds_bloc.dart';
-import 'package:arch_sample/widgets/dogs_breed_list.dart';
+import 'package:arch_sample/features/presentation/breeds/bloc/breeds_bloc.dart';
+import 'package:arch_sample/widgets/organizm/dogs_breed_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class BreedsLayout extends StatefulWidget {
   const BreedsLayout({Key? key}) : super(key: key);
@@ -15,7 +14,7 @@ class _BreedsLayoutState extends State<BreedsLayout> {
   @override
   void initState() {
     super.initState();
-    context.read<BreedsBloc>().add(LoadedContentEvent());
+    context.read<BreedsBloc>().add(const BreedsEvent.loaded());
   }
 
   @override
@@ -27,15 +26,18 @@ class _BreedsLayoutState extends State<BreedsLayout> {
       body: Center(
         child: BlocBuilder<BreedsBloc, BreedsState>(
           builder: (context, state) {
-            if (state is InitialState) {
-              return const Center(child: Text('expectation'));
-            } else if (state is LoadingHome) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is LoadedHome) {
-              return DogBreedListWidget(breeds: state.fetchedDogs);
-            } else {
-              throw Exception('unprocessed state $state in LayoutContent');
-            }
+            return state.when(
+              initial: () => const Center(
+                child: Text('expectation'),
+              ),
+              loading: () => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              loaded: (breeds) => DogBreedListWidget(breeds: breeds),
+              error: (error) => Center(
+                child: Text('$error'),
+              ),
+            );
           },
         ),
       ),

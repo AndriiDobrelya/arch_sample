@@ -2,7 +2,7 @@ import 'package:arch_sample/features/presentation/breeds/breeds_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppEntry extends StatefulWidget {
-  const AppEntry({Key? key}) : super(key: key);
+  const AppEntry({super.key});
 
   @override
   State<StatefulWidget> createState() => _AppEntryState();

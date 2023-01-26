@@ -14,10 +14,10 @@ class BreedsRepositoryImpl implements BreedsRepository {
   Future<Result<Breeds>> fetchBreeds() async {
     final result = await api.getBreeds();
     return result.when(
-      success: (data) => Result<BreedsModel>.success(data),
-      responseError: (error) => Result.error(error),
-      timeoutError: (error) => Result.error(error),
-      unexpectedError: (error) => Result.error(error),
+      success: Result<BreedsModel>.success,
+      responseError: Result.error,
+      timeoutError: Result.error,
+      unexpectedError: Result.error,
       hostUnavailable: () => Result.error(NetworkError(error: 'Host Unavailable')),
     );
   }

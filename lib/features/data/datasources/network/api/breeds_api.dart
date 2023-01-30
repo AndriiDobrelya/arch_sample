@@ -25,6 +25,8 @@ class _BreedsApiImpl implements BreedsApi {
           path: BreedsApi._breedsPath,
           data: null,
         ),
-        (response) => BreedsModel.fromJson(response),
+        (response) {
+          return BreedsModel.fromJson(response);
+        },
       );
 }

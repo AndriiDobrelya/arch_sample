@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BreedsLayout extends StatefulWidget {
-  const BreedsLayout({Key? key}) : super(key: key);
+  const BreedsLayout({super.key});
 
   @override
   State<BreedsLayout> createState() => _BreedsLayoutState();

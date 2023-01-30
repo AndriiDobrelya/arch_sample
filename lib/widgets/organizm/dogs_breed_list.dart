@@ -3,9 +3,9 @@ import 'package:arch_sample/widgets/molecula/breed_list_view_cell.dart';
 import 'package:flutter/material.dart';
 
 class DogBreedListWidget extends StatelessWidget {
-  final List<BreedInfo> breeds;
 
   const DogBreedListWidget({super.key, required this.breeds});
+  final List<BreedInfo> breeds;
 
   @override
   Widget build(BuildContext context) {

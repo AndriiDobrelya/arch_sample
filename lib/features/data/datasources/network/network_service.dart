@@ -59,8 +59,12 @@ class _NetworkServiceImpl implements NetworkService {
   }
 
   @override
-  Future<NetworkResponse<T>> request<T>(NetworkRequest request, OnParse onParse,
-      {ProgressCallback? onSentProgress, ProgressCallback? onReceiveProgress}) async {
+  Future<NetworkResponse<T>> request<T>(
+    NetworkRequest request,
+    OnParse onParse, {
+    ProgressCallback? onSentProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
     final options = Options()
       ..method = request.method.name
       ..headers = request.headers ?? <String, dynamic>{}

@@ -8,7 +8,7 @@ import 'package:get_it/get_it.dart';
 final getIt = GetIt.instance;
 
 void setupServiceLocator() {
-  NetworkService networkService = NetworkService();
+  final NetworkService networkService = NetworkService();
   getIt
     ..registerSingleton(networkService)
     ..registerSingleton(BreedsApi(getIt<NetworkService>()))

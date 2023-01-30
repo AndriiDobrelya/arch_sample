@@ -5,21 +5,16 @@ import 'package:arch_sample/features/domain/entities/breeds.dart';
 
 class BreedsModel extends Breeds {
   BreedsModel({
-    required List<BreedInfo> breedList,
+    required super.breedList,
     required this.status,
-  }) : super(breedList: breedList);
-
-  final String status;
-
-  static const String messageKey = "message";
-  static const String statusKey = "status";
+  });
 
   factory BreedsModel.fromJson(Map<String, dynamic> json) {
-    List<BreedInfo> dogs = [];
-    var status = json[statusKey];
-    Map response = Map.from(json[messageKey]);
+    final List<BreedInfo> dogs = [];
+    final status = json[statusKey];
+    final Map response = Map.from(json[messageKey]);
     response.forEach((breed, subBreeds) {
-      List<String> subBreedList = List<String>.from(subBreeds);
+      final List<String> subBreedList = List<String>.from(subBreeds);
       if (subBreedList.isNotEmpty) {
         for (var subBreed in subBreedList) {
           dogs.add(BreedInfo(breed, subBreed));
@@ -32,4 +27,9 @@ class BreedsModel extends Breeds {
   }
 
   factory BreedsModel.dogModelFromJson(String str) => BreedsModel.fromJson(json.decode(str));
+
+  final String status;
+
+  static const String messageKey = "message";
+  static const String statusKey = "status";
 }

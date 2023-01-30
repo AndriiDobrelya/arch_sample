@@ -16,14 +16,14 @@ mixin CommonErrorsHandler<T,S> on Bloc<T,S> {
   }
 
   void onConnectionError() {
-    //todo handle error
+    // TODO(AndriiD): handle Connection Error
   }
 
   void onAuthorizationError() {
-    //todo handle error
+    // TODO(AndriiD): handle Authorization Error
   }
 
   void onUnexpectedError() {
-    //todo handle error
+    // TODO(AndriiD): handle Unexpected Error
   }
 }

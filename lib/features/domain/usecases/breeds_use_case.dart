@@ -4,9 +4,9 @@ import 'package:arch_sample/features/domain/entities/breeds.dart';
 import 'package:arch_sample/features/domain/repositories/breeds_repository.dart';
 
 class BreedsUseCase implements UseCase<Result<Breeds>, NoParams> {
-  final BreedsRepository repository;
 
   BreedsUseCase(this.repository);
+  final BreedsRepository repository;
 
   @override
   Future<Result<Breeds>> execute(NoParams noParams) async => await repository.fetchBreeds();

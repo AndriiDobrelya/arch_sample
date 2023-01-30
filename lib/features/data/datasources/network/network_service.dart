@@ -82,11 +82,11 @@ class _NetworkServiceImpl implements NetworkService {
 
       return NetworkResponse.success(onParse(response.data));
     } on DioError catch (e) {
-      return parseError<T>(e);
+      return _parseError<T>(e);
     }
   }
 
-  NetworkResponse<T> parseError<T>(DioError error) {
+  NetworkResponse<T> _parseError<T>(DioError error) {
     final cause = error.error;
     final baseUrl = error.requestOptions.baseUrl;
     final path = error.requestOptions.path;
@@ -94,13 +94,13 @@ class _NetworkServiceImpl implements NetworkService {
     final statusCode = response?.statusCode;
     final networkError = NetworkError(error: cause, baseUrl: baseUrl, path: path, statusCode: statusCode);
     if (error.type == DioErrorType.response) {
-      return NetworkResponse.responseError(networkError);
+      return NetworkResponse.failure(networkError);
     } else if (error.type == DioErrorType.connectTimeout ||
         error.type == DioErrorType.sendTimeout ||
         error.type == DioErrorType.receiveTimeout) {
-      return NetworkResponse.timeoutError(networkError);
+      return NetworkResponse.failure(networkError);
     } else {
-      return NetworkResponse.unexpectedError(networkError);
+      return NetworkResponse.failure(networkError);
     }
   }
 }

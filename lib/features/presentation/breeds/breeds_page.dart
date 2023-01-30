@@ -6,8 +6,8 @@ import 'package:arch_sample/features/presentation/breeds/breeds_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class BreedsPage extends StatelessWidget {
+  const BreedsPage({super.key});
 
   @override
   Widget build(BuildContext context) {

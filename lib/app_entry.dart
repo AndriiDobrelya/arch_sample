@@ -1,8 +1,10 @@
-import 'package:arch_sample/features/presentation/breeds/breeds_screen.dart';
+import 'package:arch_sample/configs/routes.gr.dart';
 import 'package:flutter/material.dart';
 
 class AppEntry extends StatefulWidget {
-  const AppEntry({super.key});
+  AppEntry({super.key});
+
+  final _router = Routes();
 
   @override
   State<StatefulWidget> createState() => _AppEntryState();
@@ -11,12 +13,13 @@ class AppEntry extends StatefulWidget {
 class _AppEntryState extends State<AppEntry> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Sample Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      routerDelegate: widget._router.delegate(),
+      routeInformationParser: widget._router.defaultRouteParser(),
     );
   }
 }

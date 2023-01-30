@@ -4,6 +4,5 @@ import 'package:flutter/material.dart';
 
 void main() {
   setupServiceLocator();
-  runApp(const AppEntry());
+  runApp(AppEntry());
 }
-

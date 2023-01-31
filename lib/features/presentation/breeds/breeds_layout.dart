@@ -1,5 +1,7 @@
+import 'package:arch_sample/configs/app_router.dart';
 import 'package:arch_sample/features/presentation/breeds/bloc/breeds_bloc.dart';
 import 'package:arch_sample/widgets/organizm/dogs_breed_list.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,9 +26,14 @@ class _BreedsLayoutState extends State<BreedsLayout> {
         title: const Text("Breed list"),
       ),
       body: Center(
-        child: BlocBuilder<BreedsBloc, BreedsState>(
+        child: BlocConsumer<BreedsBloc, BreedsState>(
+          listener: (BuildContext context, state) {
+            state.mapOrNull(
+              showInfo: (breedInfo) => context.router.push(BreedInfoRoute(breedInfo: breedInfo.breedInfo)),
+            );
+          },
           builder: (context, state) {
-            return state.when(
+            return state.maybeWhen(
               initial: () => const Center(
                 child: Text('expectation'),
               ),
@@ -36,6 +43,9 @@ class _BreedsLayoutState extends State<BreedsLayout> {
               loaded: (breeds) => DogBreedListWidget(breeds: breeds),
               error: (error) => Center(
                 child: Text('$error'),
+              ),
+              orElse: () => const Center(
+                child: Text('text'),
               ),
             );
           },

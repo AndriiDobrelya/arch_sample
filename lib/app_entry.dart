@@ -1,10 +1,10 @@
-import 'package:arch_sample/configs/routes.gr.dart';
+import 'package:arch_sample/configs/app_router.dart';
 import 'package:flutter/material.dart';
 
 class AppEntry extends StatefulWidget {
   AppEntry({super.key});
 
-  final _router = Routes();
+  final _router = AppRouter();
 
   @override
   State<StatefulWidget> createState() => _AppEntryState();

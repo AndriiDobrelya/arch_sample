@@ -12,7 +12,6 @@ part 'breeds_state.dart';
 part 'breeds_bloc.freezed.dart';
 
 class BreedsBloc extends Bloc<BreedsEvent, BreedsState> with CommonErrorsHandler<BreedsEvent, BreedsState> {
-
   BreedsBloc(this._useCase) : super(const BreedsState.initial()) {
     on<BreedsEvent>((event, emit) async {
       emit(const BreedsState.loading());
@@ -22,6 +21,8 @@ class BreedsBloc extends Bloc<BreedsEvent, BreedsState> with CommonErrorsHandler
         error: handleError,
       );
     });
+    on<ShowInfoEvent>((event, emit) => emit(BreedsState.showInfo(breedInfo: event.breedInfo)));
   }
+
   final BreedsUseCase _useCase;
 }

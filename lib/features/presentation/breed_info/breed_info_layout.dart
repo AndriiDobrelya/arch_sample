@@ -9,8 +9,10 @@ class BreedInfoLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        child: Text(breedInfo.breed),
+      body: Center(
+        child: SizedBox(
+          child: Text(breedInfo.breed),
+        ),
       ),
     );
   }

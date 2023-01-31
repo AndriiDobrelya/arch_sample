@@ -4,8 +4,10 @@ import 'package:arch_sample/features/presentation/breed_info/breed_info_layout.d
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class BreedInfoPage extends StatelessWidget {
-  const BreedInfoPage({required this.breedInfo, super.key});
+class BreedInfoScreen extends StatelessWidget {
+  const BreedInfoScreen({required this.breedInfo, super.key});
+
+  static const path = 'breed_info';
 
   final BreedInfo breedInfo;
 
